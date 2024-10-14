@@ -9,6 +9,12 @@ output:
 
 
 
-## Project thoughts
+## Milestone 1
 
 I've always been interested in labor rights, so I'd like to examine data relating to that. I'd like to focus on what felt like a global increase in labor organizing over the last summer to see if labor organizing is really on the rise, and if there's any socioeconomic or political factors that could have caused any "bumps" in organizing. A global scale might be too large for analysis, so I might specifically focus in on the US. I could also examine how union membership and organization status impacts political views, voter registration, and turnout.
+
+## Milestone 2
+
+The question I plan on examining is whether rates of unionization increase based on the difference between the regional livable wage and the regional minimum wage. I predict that if there is a higher difference between the regional minimum and livable wages, the rate of unionization will increase. The difference between the livable wage and minimum wage is first measured by comparing the state's minimum wage to the livable wage of the area the union is organizing in. The livable wage is calculated using the MIT "Living Wage Calculator," which considers cost of living, food, transit, and other factors to calculate an hourly rate that would meet those needs (assuming a 40 hour work-week). Union organizing would be measured through recent elections results as cataloged by the NLRB, and would consider if an election won or lost. My hypothesis would be proven if there is an increase in elections won as the difference between livable and minimum wages increases. My hypothesis would be disprove through no relationship, or a negative correlation. In that case, it may be worth examining the data for other patterns that may emerge that impact rates of unionization, and the success of a union election.
+
+Please feel free to email me if you think this is too broad or I need more for the final! I'm not very confident in this since I've had a *very* weird week. mgoscha@wisc.edu :)
