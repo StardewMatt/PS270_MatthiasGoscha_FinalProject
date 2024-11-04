@@ -1,7 +1,7 @@
 ---
 title: "PS270 Final Project"
 author: "Matthias Goscha"
-description: "My final project"
+description: "An examination of state wages and their potential impact on union elections in FY2024."
 output:
   distill::distill_article:
     self_contained: false
@@ -17,4 +17,60 @@ I've always been interested in labor rights, so I'd like to examine data relatin
 
 The question I plan on examining is whether rates of unionization increase based on the difference between the regional livable wage and the regional minimum wage. I predict that if there is a higher difference between the regional minimum and livable wages, the rate of unionization will increase. The difference between the livable wage and minimum wage is first measured by comparing the state's minimum wage to the livable wage of the area the union is organizing in. The livable wage is calculated using the MIT "Living Wage Calculator," which considers cost of living, food, transit, and other factors to calculate an hourly rate that would meet those needs (assuming a 40 hour work-week). Union organizing would be measured through recent elections results as cataloged by the NLRB, and would consider if an election won or lost. My hypothesis would be proven if there is an increase in elections won as the difference between livable and minimum wages increases. My hypothesis would be disprove through no relationship, or a negative correlation. In that case, it may be worth examining the data for other patterns that may emerge that impact rates of unionization, and the success of a union election.
 
-Please feel free to email me if you think this is too broad or I need more for the final! I'm not very confident in this since I've had a *very* weird week. mgoscha@wisc.edu :)
+## Milestone 3
+
+```{r echo=FALSE, results= 'hide'}
+#Setup Chunk
+library(tidyverse)
+library(dplyr)
+NLRB<- read_csv("recent_election_results__all_dates_--20241103124939.csv")
+wages <- read_csv("Wage Data - Sheet1.csv")
+```
+
+```{r echo=FALSE, results= 'hide'}
+#Cleaning the Data
+NLRBtidy <-NLRB |>
+  mutate(state = `States & Territories`) |>
+  filter(`Ballot Type` == "Single Labor Organization") |>
+  mutate(`Votes for Labor Union1` = if_else(is.na(`Votes for Labor Union1`), 0, `Votes for Labor Union1`))|>
+  mutate(`Votes Against` = if_else(is.na(`Votes Against`), 0, `Votes Against`))|>
+  mutate(win = if_else(`Votes for Labor Union1` > `Votes Against`, 1, 0)) |>
+  group_by(state) |>
+  summarise(
+    total_wins = sum(win),
+    total_elections = n(),
+    win_proportion = (total_wins/total_elections) * 100
+  ) |>
+  mutate(win_proportion = round(win_proportion, 2))
+
+#Joining the Data
+electionWage <- NLRBtidy |>
+  left_join(wages) |>
+  drop_na(`minimum wage`)
+
+electionWagePlot <- electionWage |>
+  ggplot(aes
+             (x = `diff`, y = win_proportion)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Living Wage Differences compared to Union Elections",
+       caption = "Union Election Data: https://www.nlrb.gov/reports/graphs-data/recent-election-results
+       Minimum Wage Data: https://www.dol.gov/agencies/whd/minimum-wage/state
+       Living Wage Data: https://livingwage.mit.edu/",
+       y = "Percentage of Union Election Victory",
+       x = "Difference Between the State's Minimum Wage and Living Wage")
+```
+
+```{r echo = FALSE}
+knitr::kable(NLRBtidy,
+             col.names = c("State", "Total Union Election Wins", "Total Union Elections", "Proportion of Wins"),
+             caption = "NLRB Election Data")
+
+knitr::kable(electionWage,
+             col.names = c("State", "Total Union Election Wins", "Total Union Elections", "Proportion of Wins", "State Minimum Wage", "State Living Wage", "Difference Between Living and Minimum Wage"),
+             caption = "NLRB Election Data with State Wage Information")
+
+electionWagePlot
+```
+
+
