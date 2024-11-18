@@ -51,14 +51,19 @@ electionWage <- NLRBtidy |>
 electionWagePlot <- electionWage |>
   ggplot(aes
              (x = `diff`, y = win_proportion)) +
-  geom_point() +
-  geom_smooth(method = "lm") +
+  geom_point(
+    color = "#611303"
+    ) +
+  geom_smooth(method = "lm",
+    fill = "#c4edf5", alpha = 0.25, linewidth = 0.5, color = "#7dbec9"
+  ) +
   labs(title = "Living Wage Differences compared to Union Elections",
        caption = "Union Election Data: https://www.nlrb.gov/reports/graphs-data/recent-election-results
        Minimum Wage Data: https://www.dol.gov/agencies/whd/minimum-wage/state
        Living Wage Data: https://livingwage.mit.edu/",
        y = "Percentage of Union Election Victory",
-       x = "Difference Between the State's Minimum Wage and Living Wage")
+       x = "Difference Between the State's Minimum Wage and Living Wage")+
+  theme_light()
 ```
 
 ```{r echo = FALSE}
@@ -73,4 +78,81 @@ knitr::kable(electionWage,
 electionWagePlot
 ```
 
+## Milestone 4
+
+While the above graph represents rates of union election success, it doesn't account for the amount of unionization occurring in a state. An important metric to understand when analyzing wage difference impact on unionization efforts is the amount of unionization attempts made. Below are two graphs, one depicting the amount of union elections attempted by state, and the other depicting how that measure compares to wage differences.
+
+```{r echo=FALSE, results= 'hide'}
+#Number of Elections
+unionDensity <- electionWage |>
+  ggplot(aes(
+    x = reorder(state, -total_elections))) +
+  geom_col(aes(
+    y = total_elections, fill = "Total Elections"),
+            width = 0.8) +
+  geom_col(aes(
+    y = total_wins, fill = "Total Wins"),
+            width = 0.8) +
+  scale_fill_manual(
+    values = c(
+      "Total Elections" = "#bd574f",
+      "Total Wins" = "#7dbec9")) +
+  labs(
+    title = "Number of Union Elections per State",
+    x = "State",
+    y = "Number of Elections",
+    fill = "",
+    caption = "Union Election Data: https://www.nlrb.gov/reports/graphs-data/recent-election-results",
+  ) +
+  theme_light()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#Total vs Wage
+wageAttempt <- electionWage |>
+  ggplot(aes
+             (x = `diff`, y = total_elections)) +
+  geom_point(
+    color = "#611303"
+    ) +
+  geom_smooth(method = "lm",
+    fill = "#c4edf5", alpha = 0.25, linewidth = 0.5, color = "#7dbec9"
+  ) +
+  scale_y_log10()+
+  labs(title = "Living Wage Differences compared to Union Elections",
+       caption = "Union Election Data: https://www.nlrb.gov/reports/graphs-data/recent-election-results
+       Minimum Wage Data: https://www.dol.gov/agencies/whd/minimum-wage/state
+       Living Wage Data: https://livingwage.mit.edu/",
+       y = "Total Union Elections",
+       x = "Difference Between the State's Minimum Wage and Living Wage")+
+  theme_light()
+
+#fits
+fit_win <- lm(total_wins ~ `diff`,
+              data = electionWage)
+
+fit_total <- lm(total_elections ~ `diff`,
+                data = electionWage)
+```
+
+```{r echo = FALSE, fig.width=12, fig.height=6}
+unionDensity
+
+wageAttempt
+```
+The wage comparisons to total elections show a similar, slight negative relationship between the rates of organizing and difference in living wage within a state. However, in both these graphs, the relationship between rates of unionization, success, and wage differences is rather weak. The following tables show the linear regression model fit:
+
+```{r echo = FALSE}
+fit_win |>
+  broom::tidy() |>
+  select(term, estimate) |>  
+  knitr::kable(caption = "Union Election Wins compared to Wage Difference", digits = 2, col.names = c("Term", "Estimate"))
+
+fit_total |>
+  broom::tidy() |>
+  select(term, estimate) |>  
+  knitr::kable(caption = "Total Union Elections compared to Wage Difference", digits = 2, col.names = c("Term", "Estimate"))
+```
+The first table shows that, as the dollar difference between the living and minimum wage within a state increases by one point, the likelihood of a successful union election decreases by 0.96%. The second table indicates that, as the dollar difference between the living and minimum wage within a state increases by one point, the likelihood of holding an election to unionize decreases by 1.20%. These relationships show that the relationship between unionization efforts and wage difference is not a significant predictor for predicting the success of unionization within a state, which disproves my hypothesis. 
+
+It is worth considering that this analysis was done at a state level, and could be focused down to a local level for states with higher unionization rates, such as California. It would also be worth examining how other factors impact rates of organization, such as social influences, since the graph depicting total union elections within a state seemed to show a pattern of exponential decay. Perhaps there's also an impact of what companies workers are unionizing within, or even local attitudes towards labor organizing. These results suggest that, while wage disparities might intuitively seem to drive unionization efforts, other factors such as workplace conditions, industry norms, or political climate may play a more significant role, and could be studied further in the future.
 
