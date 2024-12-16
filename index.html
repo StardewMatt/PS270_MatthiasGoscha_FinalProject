@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-5-2.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.28/header-attrs.js","index_files/header-attrs-2.29/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","recent_election_results__all_dates_--20241103124939.csv","Wage Data - Sheet1.csv"]}
+  {"type":"character","attributes":{},"value":["governors.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-3-2.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-5-2.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.28/header-attrs.js","index_files/header-attrs-2.29/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","NST-EST2023-ALLDATA.csv","recent_election_results__all_dates_--20241103124939.csv","Wage Data - Sheet1.csv"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1543,20 +1543,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="milestone-1">Milestone 1</h2>
-<p>I’ve always been interested in labor rights, so I’d like to examine data relating to that. I’d like to focus on what felt like a global increase in labor organizing over the last summer to see if labor organizing is really on the rise, and if there’s any socioeconomic or political factors that could have caused any “bumps” in organizing. A global scale might be too large for analysis, so I might specifically focus in on the US. I could also examine how union membership and organization status impacts political views, voter registration, and turnout.</p>
-<h2 id="milestone-2">Milestone 2</h2>
-<p>The question I plan on examining is whether rates of unionization increase based on the difference between the regional livable wage and the regional minimum wage. I predict that if there is a higher difference between the regional minimum and livable wages, the rate of unionization will increase. The difference between the livable wage and minimum wage is first measured by comparing the state’s minimum wage to the livable wage of the area the union is organizing in. The livable wage is calculated using the MIT “Living Wage Calculator,” which considers cost of living, food, transit, and other factors to calculate an hourly rate that would meet those needs (assuming a 40 hour work-week). Union organizing would be measured through recent elections results as cataloged by the NLRB, and would consider if an election won or lost. My hypothesis would be proven if there is an increase in elections won as the difference between livable and minimum wages increases. My hypothesis would be disprove through no relationship, or a negative correlation. In that case, it may be worth examining the data for other patterns that may emerge that impact rates of unionization, and the success of a union election.</p>
-<h2 id="milestone-3">Milestone 3</h2>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
+<h2 id="introduction">Introduction</h2>
+<p>Working class issues and labor organizing has become a prominent issue in the modern US political landscape, however it is unclear which socioeconomic factors directly contribute to local rates of unionization. Historically, unionization came from an “economic squeeze” on the working class, but as the makeup of the working class and the jobs they occupy have shifted to reflect a modern context, there’s a chance that increased organizing may be tied to factors other than wage differences. To understand what makes organizing efforts successful, it’s important to understand if there are patterns among the successes and losses of unionization efforts which increase a union election’s chance of success disregarding any local organization choices. To better understand this, I’ll be focusing on the following question: do rates of unionization success increase based on the difference between the state livable wage and the state minimum wage? Considering that unionization is directly tied to positive economic outcomes, I predict that a higher difference between the regional minimum and livable wage translates to an increased rate of union success. These results may be influenced by local cultural pressures, such as political party in office, or density of elections, which I will be examining to assess their impact on unionization, and how they might impact results.</p>
+<h2 id="data">Data</h2>
+<p>To assess the difference between livable and minimum wage within a state, I’ll conduct a cross-sectional analysis using the U.S. Department of Labor’s Consolidated Minimum Wage Table and comparing that to the state’s livable wage as calculated by the MIT “Living Wage Calculator.” The Living Wage Calculator accounts for the cost of living, food, transit, and other factors within a state’s economy to calculate an hourly pay rate that would meet those needs (assuming a 40 hour work-week). The difference between these is calculated by subtracting the state minimum wage from the estimated living wage. Union organization success is measured through Fiscal Year 2024 election results as cataloged by the NLRB. Below are two tables summarizing the data, as well as a visualization of the number of union elections per state.</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
-<caption><span id="tab:unnamed-chunk-3">Table 1: </span>NLRB Election Data</caption>
+<caption><span id="tab:unnamed-chunk-2">Table 1: </span>NLRB Election Data</caption>
 <colgroup>
 <col style="width: 8%" />
 <col style="width: 35%" />
@@ -1893,7 +1889,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tbody>
 </table>
 <table>
-<caption><span id="tab:unnamed-chunk-3">Table 1: </span>NLRB Election Data with State Wage Information</caption>
+<caption><span id="tab:unnamed-chunk-2">Table 1: </span>NLRB Election Data with State Wage Information</caption>
 <colgroup>
 <col style="width: 3%" />
 <col style="width: 16%" />
@@ -2376,59 +2372,89 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tr>
 </tbody>
 </table>
+<p><img src="index_files/figure-html5/unnamed-chunk-2-1.png" width="1152" /></p>
+</div>
+<p>Later in the study, I include population data which is sourced from the U.S. Census Bureau</p>
+<h2 id="results">Results</h2>
+<p>When comparing the living wage differences to state election victory, and mapping a linear regression on top of that, we can observe the following results.</p>
+<div class="layout-chunk" data-layout="l-body">
 <p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
-</div>
-<h2 id="milestone-4">Milestone 4</h2>
-<p>While the above graph represents rates of union election success, it doesn’t account for the amount of unionization occurring in a state. An important metric to understand when analyzing wage difference impact on unionization efforts is the amount of unionization attempts made. Below are two graphs, one depicting the amount of union elections attempted by state, and the other depicting how that measure compares to wage differences.</p>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="1152" /><img src="index_files/figure-html5/unnamed-chunk-5-2.png" width="1152" /></p>
-</div>
-<p>The wage comparisons to total elections show a similar, slight negative relationship between the rates of organizing and difference in living wage within a state. However, in both these graphs, the relationship between rates of unionization, success, and wage differences is rather weak. The following tables show the linear regression model fit:</p>
-<div class="layout-chunk" data-layout="l-body">
 <table>
-<caption><span id="tab:unnamed-chunk-6">Table 2: </span>Union Election Wins compared to Wage Difference</caption>
+<caption><span id="tab:unnamed-chunk-3">Table 2: </span>Union Election Wins compared to Wage Difference</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Term</th>
 <th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">Standard Error</th>
+<th style="text-align: right;">P Value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
 <td style="text-align: right;">39.73</td>
+<td style="text-align: right;">29.01</td>
+<td style="text-align: right;">0.18</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">diff</td>
 <td style="text-align: right;">-0.96</td>
+<td style="text-align: right;">2.52</td>
+<td style="text-align: right;">0.71</td>
 </tr>
 </tbody>
 </table>
+<p><img src="index_files/figure-html5/unnamed-chunk-3-2.png" width="624" /></p>
 <table>
-<caption><span id="tab:unnamed-chunk-6">Table 2: </span>Total Union Elections compared to Wage Difference</caption>
+<caption><span id="tab:unnamed-chunk-3">Table 2: </span>Total Union Elections compared to Wage Difference</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Term</th>
 <th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">Standard Error</th>
+<th style="text-align: right;">P Value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
 <td style="text-align: right;">52.15</td>
+<td style="text-align: right;">36.83</td>
+<td style="text-align: right;">0.16</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">diff</td>
 <td style="text-align: right;">-1.20</td>
+<td style="text-align: right;">3.20</td>
+<td style="text-align: right;">0.71</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>The first table shows that, as the dollar difference between the living and minimum wage within a state increases by one point, the likelihood of a successful union election decreases by 0.96%. The second table indicates that, as the dollar difference between the living and minimum wage within a state increases by one point, the likelihood of holding an election to unionize decreases by 1.20%. These relationships show that the relationship between unionization efforts and wage difference is not a significant predictor for predicting the success of unionization within a state, which disproves my hypothesis.</p>
-<p>It is worth considering that this analysis was done at a state level, and could be focused down to a local level for states with higher unionization rates, such as California. It would also be worth examining how other factors impact rates of organization, such as social influences, since the graph depicting total union elections within a state seemed to show a pattern of exponential decay. Perhaps there’s also an impact of what companies workers are unionizing within, or even local attitudes towards labor organizing. These results suggest that, while wage disparities might intuitively seem to drive unionization efforts, other factors such as workplace conditions, industry norms, or political climate may play a more significant role, and could be studied further in the future.</p>
+<p>The wage comparisons to both total elections and election success show a similar, slight negative relationship between the rates of organizing and difference in living wage within a state. However, in both these graphs, the relationship between rates of unionization, success, and wage differences is rather weak. The first table shows that, as the dollar difference between the living and minimum wage within a state increases by one point, the likelihood of a successful union election decreases by 0.96 percentage points. The second table indicates that, as the dollar difference between the living and minimum wage within a state increases by one point, the likelihood of holding an election to unionize decreases by 1.20 percentage points. For both of these models, the p value is above a standard alpha of 0.05 (0.18 and 0.16 respectively) which indicates the possibility for no statistically significant relationship between these variables. These relationships show that the relationship between unionization efforts and wage difference is not a significant predictor for predicting the success of unionization within a state, which disproves my hypothesis.</p>
+<p>Considering these findings, I’d consider it appropriate to assess the impact of other factors on unionization attempts and success. It is worth considering that this analysis was done at a state level, and could be focused down to a local level for states with higher unionization rates, such as California. It would also be worth examining how other factors impact rates of organization, such as social influences, since the graph depicting total union elections within a state seemed to show a pattern of exponential decay. Firstly, I’d like to examine local pressure to see if the density of union organization has an impact on the likelihood of organization and success.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<p>When examining the map, while some less population-dense states such as Oregon have higher union density than more population dense states, I noticed that states with Republican governors seemed to have less union elections per capita. To further explore the potential relationship, I used a similar mapping to the Union Elections per State plot to create the following graph.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Difference in Unionization Based on Governor’s Party</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">44.18</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This graph reveals a confounding variable that I hadn’t accounted for in my original analysis, which is the social pressures for unionization. This graph reveals that states with Democratic governors are far more likely to to have union organization than those with Republican governors. Further analysis on the causal impact of the Governor’s party on unionization reveals that states with a Democratic governor enter union elections 44.18% more than states with a Republican governor. This indicates that there is likely a social influence for or against unionization based on the political makeup of the state’s electorate, and the values they hold. The state’s Governor’s party identification also impacts the state-level economic policies they implement, which could impact unionization rates outside of wage differences. For example, in Wisconsin, former Republican Governor Scott Walker signed Act 10 into law, which severely limited the ability for Wisconsin’s public sector employees to collectively bargain and organize. Acts similar to this could be implemented by other Republican governors which would dramatically reduce the rates of unionization within their state, as reflected in the graph.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>As mentioned above, while my hypothesis was disproven since the relationship between wage difference and rates of unionization is not statistically significant, further analysis proved that there is a relationship worth studying between rates of unionization and the political party of public officials. In my first analysis, there is the potential for a Type II error since in both analyses, a null hypothesis could not be rejected due to a high p value. Given more time, it would be worth further exploring how social factors and norms created by the political party that controlls the state’s legislature impacts rates of unionization and union success. While the wage disperity hypothesis has proven to not be true, it would be worth examining how other workplace and economic factors are impacted as well, such as workplace conditions, industry norms, or broader political climate within a given industry may play a more significant role in rates of unionization.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
