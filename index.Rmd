@@ -282,3 +282,11 @@ This graph reveals a confounding variable that I hadn't accounted for in my orig
 
 As mentioned above, while my hypothesis was disproven since the relationship between wage difference and rates of unionization is not statistically significant, further analysis proved that there is a relationship worth studying between rates of unionization and the political party of public officials. In my first analysis, there is the potential for a Type II error since in both analyses, a null hypothesis could not be rejected due to a high p value. Given more time, it would be worth further exploring how social factors and norms created by the political party that controlls the state's legislature impacts rates of unionization and union success. While the wage disperity hypothesis has proven to not be true, it would be worth examining how other workplace and economic factors are impacted as well, such as workplace conditions, industry norms, or broader political climate within a given industry may play a more significant role in rates of unionization.
 
+## Data Used
+
+Glasmeier, Amy, and Tracey Farrigan. 2024. “Living Wage Calculator.” Living Wage Calculator. https://livingwage.mit.edu/ (December 15, 2024).
+National Labor Relations Board. “Recent Election Results.” https://www.nlrb.gov/reports/graphs-data/recent-election-results.
+U.S. Census Bureau. 2024. “Annual Population Estimates for the United States, States, District of Columbia, and Puerto Rico.” https://www.census.gov/data/tables/time-series/demo/popest/2020s-state-total.html.
+U.S. Department of Labor. 2024. “State Minimum Wage.” https://www.dol.gov/agencies/whd/minimum-wage/state.
+
+
